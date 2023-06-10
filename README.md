@@ -1,19 +1,21 @@
 ## Multiple promise resolution in v8 with Rust
 
-My goal is to create a v8 Isolate that can create multiple promises, and resolve them concurrently (in a single threaded fashion).
+My goal is to create a v8 Isolate that can create multiple promises, and resolve them concurrently (in a single threaded fashion). I'd like to have "multiple promises in flight" at the same time, but I will resolve them one at a time in the isolate (just like a browser, no javascript multithreading).
 
-My initial experiments worked great with a single promise at a time, but this meant promises with resolutions that took long periods blocked the resolution of other promises that might be faster (this repo is not that experiment as it is significantly more complex).
+My initial experiments worked great with a single promise at a time, but this meant promises with resolutions that took long periods blocked the resolution of other promises that might be faster. As I started to experiment I started getting segfaults and other odd issues.
 
 I wrote this repo to experiment and figure out what I was doing wrong.
 
 Things I'm experiencing attempting to build a system that works:
- - Random SegFaults
  - Promises resolving randomly, without any action on the part of my code.
  - Promises rejecting randomly, without any action on the part of my code.
+ - Random SegFaults
  
 I've tried a number of different TryCatch and EscapableHandleScope solutions, but none have been able to resolve my issue. Hopefully there is someone out there that can help me understand what I'm doing wrong.
 
 | This feels like a memory mishandling error but I'm unable to see what I'm doing wrong.
+
+-This repo has working code that will recreate the issue (hopefully), keep in mind I'm experiencing this at random, so you may need to run it a couple times in order to see the issue.-
 
 ## External Function and Promise Creation
 
