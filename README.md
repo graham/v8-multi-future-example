@@ -60,8 +60,8 @@ To be clear, there are now 2 promises, the top level promise created by `doit` a
 
 ```rust
 fn main() {
-    v8::V8::set_flags_from_string("--harmony");
-    let platform = v8::Platform::new(0, false);
+    v8::V8::set_flags_from_string("--harmony --single-threaded");
+    let platform = v8::Platform::new_single_threaded(false).make_shared();
     v8::V8::initialize_platform(platform);
     v8::V8::initialize();
 
@@ -167,7 +167,6 @@ Thus
         }
 
         println!("{:?}", pendresrej);
-        //let stalled = module.get_stalled_top_level_await_message(&mut try_catch);
     }
 ```
 
