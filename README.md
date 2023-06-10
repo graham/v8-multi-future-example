@@ -208,3 +208,7 @@ rejected: 2
 Without any changes or recompiles.
 
 I'm stumped, I'm almost certain I'm simply using some v8 concept wrong, but I've spent days trying to figure out what that is and I can't determine it, any help would be greatly appreciated.
+
+----
+
+I believe the SegFaults I'm experiencing occur when I'm attempting to resolve these promises, but I don't think it's worth investigating those until I understand what is going on here.
