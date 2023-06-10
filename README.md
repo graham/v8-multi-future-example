@@ -48,7 +48,7 @@ Assuming this function is called by javascript with something like:
 ```javascript
 export async function doit() {
     let value = await resolve_later();
-    return `cool ${value}`;
+    return `Resolution Value = ${value}`;
 }
 ```
 
