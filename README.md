@@ -15,7 +15,7 @@ I've tried a number of different TryCatch and EscapableHandleScope solutions, bu
 
 | This feels like a memory mishandling error but I'm unable to see what I'm doing wrong.
 
--This repo has working code that will recreate the issue (hopefully), keep in mind I'm experiencing this at random, so you may need to run it a couple times in order to see the issue.-
+-- This repo has working code that will recreate the issue (hopefully), keep in mind I'm experiencing this at random, so you may need to run it a couple times in order to see the issue. --
 
 ## External Function and Promise Creation
 
