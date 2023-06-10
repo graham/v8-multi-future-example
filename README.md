@@ -11,7 +11,7 @@ Things I'm experiencing attempting to build a system that works:
  - Promises rejecting randomly, without any action on the part of my code.
  - Random SegFaults
  
-I've tried a number of different TryCatch and EscapableHandleScope solutions, but none have been able to resolve my issue. Hopefully there is someone out there that can help me understand what I'm doing wrong.
+I've tried a number of different `v8::TryCatch` and `v8::EscapableHandleScope` solutions, but none have been able to resolve my issue. Hopefully there is someone out there that can help me understand what I'm doing wrong.
 
 | This feels like a memory mishandling error but I'm unable to see what I'm doing wrong.
 
@@ -19,7 +19,7 @@ I've tried a number of different TryCatch and EscapableHandleScope solutions, bu
 
 ## External Function and Promise Creation
 
-I'm exposing a rust function that creates a v8::Promise, stores the promise resolver in a v8::External and returns. I realize the mutex might be not needed here.
+I'm exposing a rust function that creates a `v8::Promise`, stores the promise resolver in a `v8::External` and returns. I realize the mutex might be not needed here.
 
 ```rust
 fn resolve_later_fn(
@@ -52,7 +52,7 @@ export async function doit() {
 }
 ```
 
-I'm assuming I will now have a v8::Promise, in a pending state, and a HashMap with the v8::PromiseResolver in it. If I do nothing, that promise should never resolve.
+I'm assuming I will now have a `v8::Promise`, in a pending state, and a `HashMap` with the `v8::PromiseResolver` in it. If I do nothing, that promise should never resolve.
 
 To be clear, there are now 2 promises, the top level promise created by `doit` and a inner promise created by `resolve_later()`.
 
@@ -91,7 +91,7 @@ fn main() {
     let context = v8::Context::new_from_template(&mut handle_scope, global);
 ```
 
-Resolve later is now a function available to the context and the data of the Mutex<HashMap> is available to it. In all my experiments this part works well and works as one migth expect, although it does require some `unsafe` to work.
+`resolve_later` is now a function available to the context and the data of the `Mutex<HashMap>` is available to it. In all my experiments this part works well and works as one migth expect, although it does require some `unsafe` to work.
 
 ```rust
     let mut context_scope = v8::ContextScope::new(&mut handle_scope, context);
