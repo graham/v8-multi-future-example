@@ -121,7 +121,7 @@ export async function doit() {
 }
 ```
 
-We now have a module and a v8::Function we can call to create a `v8::Local<v8::Promise>`.
+We now have a module and a `v8::Function` we can call to create a `v8::Local<v8::Promise>`.
 
 ```rust
     let mut top_level_promises: Vec<v8::Local<'_, v8::Promise>> = Vec::new();
