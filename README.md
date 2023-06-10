@@ -146,7 +146,7 @@ We now have a module and a `v8::Function` we can call to create a `v8::Local<v8:
     }
 ```
 
-We've called our function 10 times, and stored the resulting promises in a Vector, the assumption is that none of these promises will remain in a `Pending` state until we resolve them.
+We've called our function 10 times, and stored the resulting promises in a Vector, the assumption is that all of these promises will remain in a `Pending` state until we resolve them.
 
 Thus
 
@@ -170,7 +170,7 @@ Thus
     }
 ```
 
-Should usually show 10 pending promises, however, __seemingly__ at random, 2 promises will be auto-rejected or auto-resolved with odd data.
+This __should__ show 10 pending promises, however, __seemingly__ at random, 2 promises will be auto-rejected or auto-resolved with odd data.
 
 No matter how many promises we create, it's always 2 that are auto-resolve/rejected. I would expect the fixed number of 2 to change based on the total number of promises if it was a simple memory leak or mishandling of internal data.
 
