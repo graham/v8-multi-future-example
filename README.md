@@ -118,8 +118,8 @@ export async function doit() {
     let main = ns.get(&mut context_scope, name.into()).unwrap();
     let main_fn = v8::Local::<v8::Function>::try_from(main).unwrap();
 
-    // ...
-}```
+}
+```
 
 We now have a module, a v8::Function we can call to create a `v8::Local<v8::Promise>`.
 
