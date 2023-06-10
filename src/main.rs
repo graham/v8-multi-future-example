@@ -142,7 +142,6 @@ export async function doit() {
         }
 
         println!("{:?}", pendresrej);
-        //let stalled = module.get_stalled_top_level_await_message(&mut try_catch);
     }
 
     println!("Done");
